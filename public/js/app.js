@@ -5348,6 +5348,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     };
   },
+  methods: {
+    sayHi: function sayHi() {
+      alert('Hello mate, how are you?');
+    }
+  },
   components: {
     ExampleComponent: _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -5413,7 +5418,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("ExampleComponent"), _vm._v("\n    " + _vm._s(_vm.name) + "\n")], 1);
+  return _c("div", [_c("ExampleComponent"), _vm._v(" "), _c("button", {
+    on: {
+      click: _vm.sayHi
+    }
+  }, [_vm._v("Say hi!")])], 1);
 };
 
 var staticRenderFns = [];

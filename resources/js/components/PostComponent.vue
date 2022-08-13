@@ -1,7 +1,7 @@
 <template>
     <div>
         <ExampleComponent></ExampleComponent>
-        {{name}}
+        <button @click="sayHi">Say hi!</button>
     </div>
 </template>
 
@@ -22,6 +22,13 @@ export default {
             }
         }
     },
+
+    methods: {
+        sayHi() {
+            alert('Hello mate, how are you?')
+        }
+    },
+
     components: {
         ExampleComponent
     }
