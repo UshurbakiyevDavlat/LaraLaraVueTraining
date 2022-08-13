@@ -5338,14 +5338,19 @@ __webpack_require__.r(__webpack_exports__);
   name: "PostExampleComponent",
   data: function data() {
     return {
-      name: 'Davlat',
-      action: 'Lesson',
-      title: 'data function explaining',
-      lessonInfo: {
-        title: 'Vue js + Laravel',
-        source: 'Laravel creative',
-        time: '3 min'
-      }
+      persons: [{
+        id: 1,
+        name: 'Davlat',
+        age: 22
+      }, {
+        id: 2,
+        name: 'Davlat2',
+        age: 22
+      }, {
+        id: 3,
+        name: 'Davlat3',
+        age: 22
+      }]
     };
   },
   methods: {
@@ -5423,14 +5428,31 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("button", {
-    on: {
-      click: _vm.sayHi
-    }
-  }, [_vm._v("Say hi!")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.sayJob))])]);
+  return _c("div", [_c("table", {
+    staticClass: "table"
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.persons, function (person) {
+    return _c("tr", [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))])]);
+  }), 0)])]);
 };
 
-var staticRenderFns = [];
+var staticRenderFns = [function () {
+  var _vm = this,
+      _c = _vm._self._c;
+
+  return _c("thead", [_c("tr", [_c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("ID")]), _vm._v(" "), _c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("Name")]), _vm._v(" "), _c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("Age")])])]);
+}];
 render._withStripped = true;
 
 
