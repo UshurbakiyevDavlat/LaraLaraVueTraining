@@ -1,7 +1,8 @@
 <template>
     <div>
-        <ExampleComponent></ExampleComponent>
+<!--        <ExampleComponent></ExampleComponent>-->
         <button @click="sayHi">Say hi!</button>
+        <div>{{sayJob}}</div>
     </div>
 </template>
 
@@ -25,8 +26,14 @@ export default {
 
     methods: {
         sayHi() {
-            alert('Hello mate, how are you?')
+            alert('Hello ' + this.name + ', how are you?')
         }
+    },
+
+    computed: {
+      sayJob() {
+        return this.name + ' is a Programmer.'
+      },
     },
 
     components: {

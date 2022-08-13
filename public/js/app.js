@@ -5350,7 +5350,12 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     sayHi: function sayHi() {
-      alert('Hello mate, how are you?');
+      alert('Hello ' + this.name + ', how are you?');
+    }
+  },
+  computed: {
+    sayJob: function sayJob() {
+      return this.name + ' is a Programmer.';
     }
   },
   components: {
@@ -5418,11 +5423,11 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("ExampleComponent"), _vm._v(" "), _c("button", {
+  return _c("div", [_c("button", {
     on: {
       click: _vm.sayHi
     }
-  }, [_vm._v("Say hi!")])], 1);
+  }, [_vm._v("Say hi!")]), _vm._v(" "), _c("div", [_vm._v(_vm._s(_vm.sayJob))])]);
 };
 
 var staticRenderFns = [];
