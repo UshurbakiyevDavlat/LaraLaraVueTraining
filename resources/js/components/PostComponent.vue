@@ -1,8 +1,22 @@
 <template>
     <div>
 <!--        <ExampleComponent></ExampleComponent>-->
-        <button @click="sayHi">Say hi!</button>
-        <div>{{sayJob}}</div>
+       <table class="table">
+           <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Age</th>
+                </tr>
+           </thead>
+           <tbody>
+                <tr v-for="person in persons" v-bind:key="person.id">
+                    <td>{{person.id}}</td>
+                    <td>{{person.name}}</td>
+                    <td>{{person.age}}</td>
+                </tr>
+           </tbody>
+       </table>
     </div>
 </template>
 
@@ -13,14 +27,23 @@ export default {
     name: "PostExampleComponent",
     data() {
         return {
-            name: 'Davlat',
-            action: 'Lesson',
-            title: 'data function explaining',
-            lessonInfo: {
-                title: 'Vue js + Laravel',
-                source: 'Laravel creative',
-                time: '3 min'
-            }
+            persons: [
+                {
+                    id: 1,
+                    name: 'Davlat',
+                    age: 22
+                },
+                {
+                    id: 2,
+                    name: 'Davlat2',
+                    age: 22
+                },
+                {
+                    id: 3,
+                    name: 'Davlat3',
+                    age: 22
+                },
+            ],
         }
     },
 
