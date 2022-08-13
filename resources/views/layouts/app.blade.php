@@ -21,7 +21,6 @@
 </head>
 <body>
     <div id="app">
-        <example-component></example-component>
         <post-component></post-component>
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">

@@ -1,10 +1,18 @@
 <template>
-    <div>post component</div>
+    <div>
+        <ExampleComponent></ExampleComponent>
+    </div>
 </template>
 
 <script>
+import ExampleComponent from "./ExampleComponent";
+
 export default {
-    name: "PostComponent"
+    name: "PostExampleComponent",
+
+    components: {
+        ExampleComponent
+    }
 }
 </script>
 
