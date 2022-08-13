@@ -10,7 +10,11 @@
                 </tr>
            </thead>
            <tbody>
+<<<<<<< HEAD
                 <tr v-for="person in persons" v-bind:key="person.id">
+=======
+                <tr v-for="person in persons">
+>>>>>>> f2f70b3bee0a2ac4a9c4f65ddadda74bef2eb81d
                     <td>{{person.id}}</td>
                     <td>{{person.name}}</td>
                     <td>{{person.age}}</td>
