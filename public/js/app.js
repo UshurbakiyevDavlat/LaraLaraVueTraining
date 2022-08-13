@@ -5336,6 +5336,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostExampleComponent",
+  data: function data() {
+    return {
+      name: 'Davlat',
+      action: 'Lesson',
+      title: 'data function explaining',
+      lessonInfo: {
+        title: 'Vue js + Laravel',
+        source: 'Laravel creative',
+        time: '3 min'
+      }
+    };
+  },
   components: {
     ExampleComponent: _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -5401,7 +5413,7 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("ExampleComponent")], 1);
+  return _c("div", [_c("ExampleComponent"), _vm._v("\n    " + _vm._s(_vm.name) + "\n")], 1);
 };
 
 var staticRenderFns = [];
