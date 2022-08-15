@@ -1,6 +1,7 @@
 import Vue from "vue";
 import ExampleComponent from "./components/ExampleComponent";
-import PostComponent from "./components/PostComponent";
+import ListComponent from "./components/ListComponent";
+import StoreComponent from "./components/StoreComponent";
 
 require('./bootstrap');
 
@@ -9,6 +10,7 @@ const app = new Vue({
 
     components: {
         ExampleComponent,
-        PostComponent,
+        ListComponent,
+        StoreComponent
     }
 });

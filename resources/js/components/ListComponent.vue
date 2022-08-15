@@ -34,7 +34,7 @@ export default {
 
     methods: {
         getPersons() {
-            axios.get('/persons')
+            axios.get('/api/person/list')
                 .then(result => {
                     this.persons = result.data
                 })
@@ -50,11 +50,6 @@ export default {
         //          return person.age > 20
         //      })
         //  },
-        //  TwentyLessAgedPeople() {
-        //    return this.persons.filter(function (person) {
-        //        return person.age > 20
-        //    })
-        // },
     },
 
     components: {}
