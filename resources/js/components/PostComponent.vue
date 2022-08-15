@@ -10,7 +10,7 @@
                 </tr>
            </thead>
            <tbody>
-                <tr v-for="person in persons" v-bind:key="person.id">
+                <tr v-for="person in TwentyOlderAgedPeople" v-bind:key="person.id">
                     <td>{{person.id}}</td>
                     <td>{{person.name}}</td>
                     <td>{{person.age}}</td>
@@ -31,17 +31,17 @@ export default {
                 {
                     id: 1,
                     name: 'Davlat',
-                    age: 22
+                    age: 18
                 },
                 {
                     id: 2,
                     name: 'Davlat2',
-                    age: 22
+                    age: 25
                 },
                 {
                     id: 3,
                     name: 'Davlat3',
-                    age: 22
+                    age: 31
                 },
             ],
         }
@@ -57,6 +57,16 @@ export default {
       sayJob() {
         return this.name + ' is a Programmer.'
       },
+      TwentyOlderAgedPeople() {
+          return this.persons.filter(function (person) {
+              return person.age > 20
+          })
+      },
+      TwentyLessAgedPeople() {
+        return this.persons.filter(function (person) {
+            return person.age > 20
+        })
+     },
     },
 
     components: {

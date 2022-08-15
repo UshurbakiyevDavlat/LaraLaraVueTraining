@@ -5341,15 +5341,15 @@ __webpack_require__.r(__webpack_exports__);
       persons: [{
         id: 1,
         name: 'Davlat',
-        age: 22
+        age: 18
       }, {
         id: 2,
         name: 'Davlat2',
-        age: 22
+        age: 25
       }, {
         id: 3,
         name: 'Davlat3',
-        age: 22
+        age: 31
       }]
     };
   },
@@ -5361,6 +5361,16 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     sayJob: function sayJob() {
       return this.name + ' is a Programmer.';
+    },
+    TwentyOlderAgedPeople: function TwentyOlderAgedPeople() {
+      return this.persons.filter(function (person) {
+        return person.age > 20;
+      });
+    },
+    TwentyLessAgedPeople: function TwentyLessAgedPeople() {
+      return this.persons.filter(function (person) {
+        return person.age > 20;
+      });
     }
   },
   components: {
@@ -5430,7 +5440,7 @@ var render = function render() {
 
   return _c("div", [_c("table", {
     staticClass: "table"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.persons, function (person) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.TwentyOlderAgedPeople, function (person) {
     return _c("tr", {
       key: person.id
     }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))])]);
