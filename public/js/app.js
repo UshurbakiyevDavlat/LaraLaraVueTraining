@@ -5332,50 +5332,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent */ "./resources/js/components/ExampleComponent.vue");
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostExampleComponent",
   data: function data() {
     return {
-      persons: [{
-        id: 1,
-        name: 'Davlat',
-        age: 18
-      }, {
-        id: 2,
-        name: 'Davlat2',
-        age: 25
-      }, {
-        id: 3,
-        name: 'Davlat3',
-        age: 31
-      }]
+      persons: null
     };
   },
+  mounted: function mounted() {
+    this.getPersons();
+  },
   methods: {
-    sayHi: function sayHi() {
-      alert('Hello ' + this.name + ', how are you?');
-    }
-  },
-  computed: {
-    sayJob: function sayJob() {
-      return this.name + ' is a Programmer.';
-    },
-    TwentyOlderAgedPeople: function TwentyOlderAgedPeople() {
-      return this.persons.filter(function (person) {
-        return person.age > 20;
-      });
-    },
-    TwentyLessAgedPeople: function TwentyLessAgedPeople() {
-      return this.persons.filter(function (person) {
-        return person.age > 20;
+    getPersons: function getPersons() {
+      var _this = this;
+
+      axios.get('/persons').then(function (result) {
+        _this.persons = result.data;
+      })["catch"](function (error) {
+        console.log('catch an error: ' + error);
       });
     }
   },
-  components: {
-    ExampleComponent: _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
-  }
+  computed: {//  TwentyOlderAgedPeople() {
+    //      return this.persons.filter(function (person) {
+    //          return person.age > 20
+    //      })
+    //  },
+    //  TwentyLessAgedPeople() {
+    //    return this.persons.filter(function (person) {
+    //        return person.age > 20
+    //    })
+    // },
+  },
+  components: {}
 });
 
 /***/ }),
@@ -5440,7 +5429,7 @@ var render = function render() {
 
   return _c("div", [_c("table", {
     staticClass: "table"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.TwentyOlderAgedPeople, function (person) {
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.persons, function (person) {
     return _c("tr", {
       key: person.id
     }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))])]);
