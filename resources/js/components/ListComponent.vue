@@ -6,14 +6,25 @@
                 <th scope="col">ID</th>
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
+                <th scope="col">Edit</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="person in persons" v-bind:key="person.id">
-                <td>{{ person.id }}</td>
-                <td>{{ person.name }}</td>
-                <td>{{ person.age }}</td>
-            </tr>
+            <template v-for="person in persons">
+                <tr>
+                    <td>{{ person.id }}</td>
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td><a href="#" @click.prevent="switchEditPerson(person.id)" class="btn btn-success">Edit</a></td>
+                </tr>
+
+                <tr :class="isEditedPerson(person.id) ? '' : 'd-none'">
+                    <td><input type="text" v-model="person.name"></td>
+                    <td><input type="number" v-model="person.age"></td>
+                    <td><a href="#" @click.prevent="switchEditPerson(null)" class="btn btn-success">Update</a></td>
+                </tr>
+
+            </template>
             </tbody>
         </table>
     </div>
@@ -25,7 +36,8 @@ export default {
     name: "PostExampleComponent",
     data() {
         return {
-            persons: null
+            persons: null,
+            isEditablePerson: null
         }
     },
     mounted() {
@@ -42,6 +54,14 @@ export default {
                     console.log('catch an error: ' + error)
                 })
         },
+
+        switchEditPerson(id) {
+            this.isEditablePerson = id
+        },
+
+        isEditedPerson(id) {
+            return this.isEditablePerson === id
+        }
     },
 
     computed: {

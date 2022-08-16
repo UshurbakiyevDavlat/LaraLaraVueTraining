@@ -5336,7 +5336,8 @@ __webpack_require__.r(__webpack_exports__);
   name: "PostExampleComponent",
   data: function data() {
     return {
-      persons: null
+      persons: null,
+      isEditablePerson: null
     };
   },
   mounted: function mounted() {
@@ -5351,6 +5352,12 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log('catch an error: ' + error);
       });
+    },
+    switchEditPerson: function switchEditPerson(id) {
+      this.isEditablePerson = id;
+    },
+    isEditedPerson: function isEditedPerson(id) {
+      return this.isEditablePerson === id;
     }
   },
   computed: {//  TwentyOlderAgedPeople() {
@@ -5464,11 +5471,73 @@ var render = function render() {
 
   return _c("div", [_c("table", {
     staticClass: "table"
-  }, [_vm._m(0), _vm._v(" "), _c("tbody", _vm._l(_vm.persons, function (person) {
-    return _c("tr", {
-      key: person.id
-    }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))])]);
-  }), 0)])]);
+  }, [_vm._m(0), _vm._v(" "), _c("tbody", [_vm._l(_vm.persons, function (person) {
+    return [_c("tr", [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))]), _vm._v(" "), _c("td", [_c("a", {
+      staticClass: "btn btn-success",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.switchEditPerson(person.id);
+        }
+      }
+    }, [_vm._v("Edit")])])]), _vm._v(" "), _c("tr", {
+      "class": _vm.isEditedPerson(person.id) ? "" : "d-none"
+    }, [_c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: person.name,
+        expression: "person.name"
+      }],
+      attrs: {
+        type: "text"
+      },
+      domProps: {
+        value: person.name
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+
+          _vm.$set(person, "name", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_c("input", {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: person.age,
+        expression: "person.age"
+      }],
+      attrs: {
+        type: "number"
+      },
+      domProps: {
+        value: person.age
+      },
+      on: {
+        input: function input($event) {
+          if ($event.target.composing) return;
+
+          _vm.$set(person, "age", $event.target.value);
+        }
+      }
+    })]), _vm._v(" "), _c("td", [_c("a", {
+      staticClass: "btn btn-success",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.switchEditPerson(null);
+        }
+      }
+    }, [_vm._v("Update")])])])];
+  })], 2)])]);
 };
 
 var staticRenderFns = [function () {
@@ -5487,7 +5556,11 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("Age")])])]);
+  }, [_vm._v("Age")]), _vm._v(" "), _c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("Edit")])])]);
 }];
 render._withStripped = true;
 
