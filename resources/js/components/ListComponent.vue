@@ -7,6 +7,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Age</th>
                 <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -16,6 +17,7 @@
                     <td>{{ person.name }}</td>
                     <td>{{ person.age }}</td>
                     <td><a href="#" @click.prevent="switchEditPerson(person.id)" class="btn btn-success">Edit</a></td>
+                    <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-danger">Delete</a></td>
                 </tr>
 
                 <tr :class="isEditedPerson(person.id) ? '' : 'd-none'">
@@ -70,6 +72,14 @@ export default {
                 age: person.age,
                 job: person.job
             })
+                .then(
+                    this.getPersons
+                )
+            this.switchEditPerson(null)
+        },
+
+        deletePerson(id) {
+            axios.delete(`/api/person/delete/${id}`)
                 .then(
                     this.getPersons
                 )

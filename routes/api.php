@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Person\CreateController;
+use App\Http\Controllers\Person\DeleteController;
 use App\Http\Controllers\Person\IndexController;
 use App\Http\Controllers\Person\PersonListController;
 use App\Http\Controllers\Person\StoreController;
@@ -31,4 +32,5 @@ Route::group(['Namespace' => 'Person', 'prefix' => 'person'], static function ()
     Route::get('/create', [CreateController::class, '__invoke'])->name('person.create');
 
     Route::patch('/update/{person}', [UpdateController::class, '__invoke'])->name('person.update');
+    Route::delete('/delete/{person}', [DeleteController::class, '__invoke'])->name('person.delete');
 });

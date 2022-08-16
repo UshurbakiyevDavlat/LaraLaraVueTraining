@@ -5366,6 +5366,10 @@ __webpack_require__.r(__webpack_exports__);
         job: person.job
       }).then(this.getPersons);
       this.switchEditPerson(null);
+    },
+    deletePerson: function deletePerson(id) {
+      axios["delete"]("/api/person/delete/".concat(id)).then(this.getPersons);
+      this.switchEditPerson(null);
     }
   },
   computed: {//  TwentyOlderAgedPeople() {
@@ -5493,7 +5497,18 @@ var render = function render() {
           return _vm.switchEditPerson(person.id);
         }
       }
-    }, [_vm._v("Edit")])])]), _vm._v(" "), _c("tr", {
+    }, [_vm._v("Edit")])]), _vm._v(" "), _c("td", [_c("a", {
+      staticClass: "btn btn-danger",
+      attrs: {
+        href: "#"
+      },
+      on: {
+        click: function click($event) {
+          $event.preventDefault();
+          return _vm.deletePerson(person.id);
+        }
+      }
+    }, [_vm._v("Delete")])])]), _vm._v(" "), _c("tr", {
       "class": _vm.isEditedPerson(person.id) ? "" : "d-none"
     }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_c("input", {
       directives: [{
@@ -5570,7 +5585,11 @@ var staticRenderFns = [function () {
     attrs: {
       scope: "col"
     }
-  }, [_vm._v("Edit")])])]);
+  }, [_vm._v("Edit")]), _vm._v(" "), _c("th", {
+    attrs: {
+      scope: "col"
+    }
+  }, [_vm._v("Delete")])])]);
 }];
 render._withStripped = true;
 
