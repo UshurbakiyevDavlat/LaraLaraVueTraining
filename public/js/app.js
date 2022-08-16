@@ -5358,6 +5358,14 @@ __webpack_require__.r(__webpack_exports__);
     },
     isEditedPerson: function isEditedPerson(id) {
       return this.isEditablePerson === id;
+    },
+    updatePerson: function updatePerson(person) {
+      axios.patch("/api/person/update/".concat(this.isEditablePerson), {
+        name: person.name,
+        age: person.age,
+        job: person.job
+      }).then(this.getPersons);
+      this.switchEditPerson(null);
     }
   },
   computed: {//  TwentyOlderAgedPeople() {
@@ -5472,7 +5480,9 @@ var render = function render() {
   return _c("div", [_c("table", {
     staticClass: "table"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", [_vm._l(_vm.persons, function (person) {
-    return [_c("tr", [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))]), _vm._v(" "), _c("td", [_c("a", {
+    return [_c("tr", {
+      "class": _vm.isEditedPerson(person.id) ? "d-none" : ""
+    }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.name))]), _vm._v(" "), _c("td", [_vm._v(_vm._s(person.age))]), _vm._v(" "), _c("td", [_c("a", {
       staticClass: "btn btn-success",
       attrs: {
         href: "#"
@@ -5485,7 +5495,7 @@ var render = function render() {
       }
     }, [_vm._v("Edit")])])]), _vm._v(" "), _c("tr", {
       "class": _vm.isEditedPerson(person.id) ? "" : "d-none"
-    }, [_c("td", [_c("input", {
+    }, [_c("td", [_vm._v(_vm._s(person.id))]), _vm._v(" "), _c("td", [_c("input", {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -5533,7 +5543,7 @@ var render = function render() {
       on: {
         click: function click($event) {
           $event.preventDefault();
-          return _vm.switchEditPerson(null);
+          return _vm.updatePerson(person);
         }
       }
     }, [_vm._v("Update")])])])];

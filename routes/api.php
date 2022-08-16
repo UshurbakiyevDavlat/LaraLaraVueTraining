@@ -4,6 +4,7 @@ use App\Http\Controllers\Person\CreateController;
 use App\Http\Controllers\Person\IndexController;
 use App\Http\Controllers\Person\PersonListController;
 use App\Http\Controllers\Person\StoreController;
+use App\Http\Controllers\Person\UpdateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,6 @@ Route::group(['Namespace' => 'Person', 'prefix' => 'person'], static function ()
 
     Route::get('list', [PersonListController::class, '__invoke'])->name('person.list');
     Route::get('/create', [CreateController::class, '__invoke'])->name('person.create');
+
+    Route::patch('/update/{person}', [UpdateController::class, '__invoke'])->name('person.update');
 });
