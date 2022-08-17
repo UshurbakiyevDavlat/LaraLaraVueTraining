@@ -30,10 +30,12 @@
             </template>
             </tbody>
         </table>
+        <example-component ref="index"></example-component>
     </div>
 </template>
 
 <script>
+import ExampleComponent from "./ExampleComponent";
 
 export default {
     name: "PostExampleComponent",
@@ -45,6 +47,7 @@ export default {
     },
     mounted() {
         this.getPersons()
+        this.$refs.index.printHello()
     },
 
     methods: {
@@ -85,6 +88,9 @@ export default {
                 )
             this.switchEditPerson(null)
         },
+        sayHiParent() {
+            console.log('Hi child method!')
+        }
     },
 
     computed: {
@@ -95,7 +101,9 @@ export default {
         //  },
     },
 
-    components: {}
+    components: {
+        ExampleComponent
+    }
 }
 </script>
 

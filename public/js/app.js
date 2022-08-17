@@ -5314,8 +5314,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  name: 'ExampleComponent',
   mounted: function mounted() {
     console.log('Component mounted.');
+    console.log(this.$parent.sayHiParent());
+  },
+  methods: {
+    printHello: function printHello() {
+      console.log('exampleHere');
+    }
   }
 });
 
@@ -5332,6 +5339,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ExampleComponent */ "./resources/js/components/ExampleComponent.vue");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostExampleComponent",
   data: function data() {
@@ -5342,6 +5351,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getPersons();
+    this.$refs.index.printHello();
   },
   methods: {
     getPersons: function getPersons() {
@@ -5370,6 +5380,9 @@ __webpack_require__.r(__webpack_exports__);
     deletePerson: function deletePerson(id) {
       axios["delete"]("/api/person/delete/".concat(id)).then(this.getPersons);
       this.switchEditPerson(null);
+    },
+    sayHiParent: function sayHiParent() {
+      console.log('Hi child method!');
     }
   },
   computed: {//  TwentyOlderAgedPeople() {
@@ -5378,7 +5391,9 @@ __webpack_require__.r(__webpack_exports__);
     //      })
     //  },
   },
-  components: {}
+  components: {
+    ExampleComponent: _ExampleComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
+  }
 });
 
 /***/ }),
@@ -5439,27 +5454,10 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _vm._m(0);
+  return _c("div");
 };
 
-var staticRenderFns = [function () {
-  var _vm = this,
-      _c = _vm._self._c;
-
-  return _c("div", {
-    staticClass: "container"
-  }, [_c("div", {
-    staticClass: "row justify-content-center"
-  }, [_c("div", {
-    staticClass: "col-md-8"
-  }, [_c("div", {
-    staticClass: "card"
-  }, [_c("div", {
-    staticClass: "card-header"
-  }, [_vm._v("Hi Component")]), _vm._v("\n                    Example trying\n                "), _c("div", {
-    staticClass: "card-body"
-  }, [_vm._v("\n                    I'm an example component.\n                ")])])])])]);
-}];
+var staticRenderFns = [];
 render._withStripped = true;
 
 
@@ -5562,7 +5560,9 @@ var render = function render() {
         }
       }
     }, [_vm._v("Update")])])])];
-  })], 2)])]);
+  })], 2)]), _vm._v(" "), _c("example-component", {
+    ref: "index"
+  })], 1);
 };
 
 var staticRenderFns = [function () {
