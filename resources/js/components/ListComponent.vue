@@ -1,5 +1,6 @@
 <template>
     <div>
+        <example-component ref="index" :obj="obj"></example-component>
         <table class="table">
             <thead>
             <tr>
@@ -30,7 +31,6 @@
             </template>
             </tbody>
         </table>
-        <example-component ref="index"></example-component>
     </div>
 </template>
 
@@ -42,7 +42,10 @@ export default {
     data() {
         return {
             persons: null,
-            isEditablePerson: null
+            isEditablePerson: null,
+            obj: {
+                name: 'Davlat'
+            }
         }
     },
     mounted() {

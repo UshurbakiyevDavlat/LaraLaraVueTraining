@@ -5315,6 +5315,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'ExampleComponent',
+  props: ['obj'],
   mounted: function mounted() {
     console.log('Component mounted.');
     console.log(this.$parent.sayHiParent());
@@ -5346,7 +5347,10 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       persons: null,
-      isEditablePerson: null
+      isEditablePerson: null,
+      obj: {
+        name: 'Davlat'
+      }
     };
   },
   mounted: function mounted() {
@@ -5454,7 +5458,17 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div");
+  return _c("div", {
+    staticClass: "container"
+  }, [_c("div", {
+    staticClass: "row justify-content-center"
+  }, [_c("div", {
+    staticClass: "col-md-8"
+  }, [_c("div", {
+    staticClass: "card"
+  }, [_c("div", {
+    staticClass: "card-header"
+  }, [_vm._v("Hi " + _vm._s(_vm.obj.name) + " !")])])])])]);
 };
 
 var staticRenderFns = [];
@@ -5479,7 +5493,12 @@ var render = function render() {
   var _vm = this,
       _c = _vm._self._c;
 
-  return _c("div", [_c("table", {
+  return _c("div", [_c("example-component", {
+    ref: "index",
+    attrs: {
+      obj: _vm.obj
+    }
+  }), _vm._v(" "), _c("table", {
     staticClass: "table"
   }, [_vm._m(0), _vm._v(" "), _c("tbody", [_vm._l(_vm.persons, function (person) {
     return [_c("tr", {
@@ -5560,9 +5579,7 @@ var render = function render() {
         }
       }
     }, [_vm._v("Update")])])])];
-  })], 2)]), _vm._v(" "), _c("example-component", {
-    ref: "index"
-  })], 1);
+  })], 2)])], 1);
 };
 
 var staticRenderFns = [function () {
