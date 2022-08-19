@@ -13,7 +13,7 @@
             </thead>
             <tbody>
             <template v-for="person in persons">
-                <tr :class="isEditedPerson(person.id) ? 'd-none' : ''">
+                <tr :class="isEditablePerson === person.id ? 'd-none' : ''">
                     <td>{{ person.id }}</td>
                     <td>{{ person.name }}</td>
                     <td>{{ person.age }}</td>
@@ -21,12 +21,7 @@
                     <td><a href="#" @click.prevent="deletePerson(person.id)" class="btn btn-danger">Delete</a></td>
                 </tr>
 
-                <tr :class="isEditedPerson(person.id) ? '' : 'd-none'">
-                    <td>{{ person.id }}</td>
-                    <td><input type="text" v-model="person.name"></td>
-                    <td><input type="number" v-model="person.age"></td>
-                    <td><a href="#" @click.prevent="updatePerson(person)" class="btn btn-success">Update</a></td>
-                </tr>
+                <EditComponent :person=person :ref="`edit_${person.id}`"></EditComponent>
 
             </template>
             </tbody>
@@ -36,6 +31,7 @@
 
 <script>
 import ExampleComponent from "./ExampleComponent";
+import EditComponent from "./EditComponent";
 
 export default {
     name: "PostExampleComponent",
@@ -66,10 +62,7 @@ export default {
 
         switchEditPerson(id) {
             this.isEditablePerson = id
-        },
-
-        isEditedPerson(id) {
-            return this.isEditablePerson === id
+            console.log(this.$refs[`edit_${id}`][0]) // this way we can access ref of edit data
         },
 
         updatePerson(person) {
@@ -105,6 +98,7 @@ export default {
     },
 
     components: {
+        EditComponent,
         ExampleComponent
     }
 }
