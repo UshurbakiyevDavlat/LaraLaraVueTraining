@@ -1,7 +1,5 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import ListComponent from "./components/ListComponent";
-import StoreComponent from "./components/StoreComponent";
 
 Vue.use(VueRouter)
 
@@ -10,12 +8,14 @@ export default new VueRouter({
 
     routes: [
         {
+            name: 'person.index',
             path: '/persons',
-            component: ListComponent
+            component: () => import('./components/Person/ListComponent')
         },
         {
+            name: 'person.create',
             path: '/persons/create',
-            component: StoreComponent
+            component: () => import('./components/Person/StoreComponent')
         },
     ]
 })

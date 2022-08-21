@@ -36,10 +36,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/persons/create">Create</router-link>
+                        <router-link class="nav-link" :to="{name: 'person.index'}">Create</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link" to="/persons">List</router-link>
+                        <router-link class="nav-link" :to="{name: 'person.create'}">List</router-link>
                     </li>
 
                 </ul>

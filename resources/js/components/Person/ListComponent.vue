@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import ExampleComponent from "./ExampleComponent";
+import ExampleComponent from "../ExampleComponent";
 import EditComponent from "./EditComponent";
 import ShowComponent from "./ShowComponent";
 
