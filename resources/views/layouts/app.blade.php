@@ -36,11 +36,12 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a href="{{ route('person.index') }}" class="nav-link">People</a>
+                        <router-link class="nav-link" to="/persons/create">Create</router-link>
                     </li>
-                    <li>
-                        <a href="{{ route('person.create') }}" class="nav-link">AddPeople</a>
+                    <li class="nav-item">
+                        <router-link class="nav-link" to="/persons">List</router-link>
                     </li>
+
                 </ul>
 
                 <!-- Right Side Of Navbar -->

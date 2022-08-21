@@ -25,11 +25,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(['Namespace' => 'Person', 'prefix' => 'person'], static function () {
-    Route::get('/', [IndexController::class, '__invoke'])->name('person.index');
+//    Route::get('/', [IndexController::class, '__invoke'])->name('person.index');
     Route::post('/', [StoreController::class, '__invoke'])->name('person.store');
 
     Route::get('list', [PersonListController::class, '__invoke'])->name('person.list');
-    Route::get('/create', [CreateController::class, '__invoke'])->name('person.create');
+//    Route::get('/create', [CreateController::class, '__invoke'])->name('person.create');
 
     Route::patch('/update/{person}', [UpdateController::class, '__invoke'])->name('person.update');
     Route::delete('/delete/{person}', [DeleteController::class, '__invoke'])->name('person.delete');
