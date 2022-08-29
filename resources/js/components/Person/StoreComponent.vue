@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import router from "../../router";
 export default {
     name: "StoreComponent",
 
@@ -36,6 +37,8 @@ export default {
                     this.name = null
                     this.age = null
                     this.job = null
+
+                    router.push({name:'person.index'})
                 });
         }
     },
