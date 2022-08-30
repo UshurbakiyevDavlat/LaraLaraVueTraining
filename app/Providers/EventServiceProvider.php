@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\PersonCreationEvent;
+use App\Listeners\PersonCreationListener;
+use App\Models\Person;
+use App\Observers\PersonObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -18,6 +21,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        PersonCreationEvent::class => [
+            PersonCreationListener::class
+        ],
     ];
 
     /**
@@ -27,6 +33,6 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Person::observe(new PersonObserver());
     }
 }

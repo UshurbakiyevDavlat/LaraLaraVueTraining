@@ -48,6 +48,12 @@ return [
     */
 
     'channels' => [
+        'person' => [
+            'driver' => 'single',
+            'level' => env('LOG_LEVEL', 'info'),
+            'path' => storage_path('logs/person.log'),
+        ],
+
         'stack' => [
             'driver' => 'stack',
             'channels' => ['single'],
